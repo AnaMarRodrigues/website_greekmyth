@@ -1,0 +1,727 @@
+@font-face {
+  font-family:qtagate ;
+  src: url(fonts/qt_agatetype/QTAgateType.otf);
+}
+
+@font-face {
+  font-family:clash ;
+  src: url(fonts/ClashDisplay_Complete/Fonts/TTF/ClashDisplay-Variable.ttf);
+}
+
+
+ /*menu  */
+
+ .nav {
+  position: fixed;
+  top: 50px;
+  right: 60px;
+  background-color: transparent;
+  padding: 8px;
+  transition: 0.5s;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 2px 2px rgba(0,0,0,.2);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items:center;
+  outline: 1px solid #130D1A;
+  z-index: 9999;
+}
+
+
+.menu {
+  margin: 0;
+  padding: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+.nav input:checked ~ .menu {
+   width: clamp(160px, 55vw, 330px);
+}
+
+.menu li {
+  list-style: none;
+  margin: 0 8px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: rgb(113, 112, 112);
+  text-transform: uppercase;
+  font-weight: 350;
+  transition: 0.5s;
+  font-family: clash;
+}
+
+.menu li a:hover {
+  color: #130D1A;
+  font-weight: 450;
+}
+
+.nav input {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.nav span {
+  position: absolute;
+  right: 17px;
+  width: 30px;
+  height: 3px;
+  border-radius: 50px;
+  background-color: #130D1A;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.nav input:checked ~ span {
+  background-color: #130D1A;
+}
+
+.nav span:nth-child(2) {
+  transform: translateY(-8px);
+}
+
+.nav input:checked ~ span:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+.nav span:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.nav input:checked ~ span:nth-child(3) {
+  transform: translateY(0) rotate(45deg);
+}  
+
+.nav input:checked ~ span:nth-child(4) {
+  opacity: 0;
+}
+
+
+/*textura*/
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#85827f 1px, transparent 0);
+  background-size: 2px 2px;
+  opacity: 0.08; /* intensidade */
+  z-index: -9999;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: qtagate;
+  background: #e4ded6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Olympian Roots titulo */
+.titlehome{
+  font-size: 10.5rem;
+  font-weight: 10;
+  text-align: center;
+  color: #130D1A;
+  margin: 200px 0 0;
+}
+
+
+/* Botões */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn {
+  padding: 8px ;
+  border: 1px solid #130D1A;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #130D1A;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  transition: all 0.3s ease;
+  font-family:clash;
+  font-weight: 350;
+   width: 180%;
+  display: block; 
+  text-align: center;
+  box-sizing: border-box; 
+
+}
+
+.btn:hover {
+  background-color: #130D1A;
+  color: #eae4dc;
+}
+
+.subtitle{
+  text-align: center;
+  font-family:clash;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* Cartas soltas em background */
+.cards-bg {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card-img {
+  position: absolute;
+  width: 160px;
+  opacity: 0.90;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.6s ease, filter 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+.card-img:hover {
+  transform: scale(1.05) rotateY(10deg) rotateX(5deg);
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+/*footer*/
+
+.footerhome {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 30px 30px;
+  box-sizing: border-box;
+  z-index: 1000;
+  height: 50px;
+}
+
+.footer-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* texto nas pontas */
+  position: relative; 
+  width: 100%;
+  height: 100%;
+}
+
+.footer-p, .footer-p2 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 0.9rem;
+  color: #130D1A;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.footer-p2 a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.footer-p2 a:hover {
+  text-decoration: underline;
+}
+
+/* Container da estrela e linhas centralizados */
+.divider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 600px; /* largura do conjunto linha+estrela+linha */
+  pointer-events: none; /* para não interferir em cliques */
+  z-index: 5;
+}
+
+.line {
+  height: 0.8px;
+  background-color: #130D1A;
+  flex-grow: 1;
+  min-width: 50px;
+}
+
+.star {
+  width: 30px;
+  height: auto;
+}
+
+
+
+/* nome deuses pagina gods */
+.title {
+  margin: 60px 0 0;    /* reduz a margem superior */
+  font-size: 5.2rem;   /* ajustável para caber melhor */
+  font-weight: 300;
+  color: #130D1A;
+  text-align: center;
+}
+
+
+
+
+.swiper {
+   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* garante alinhamento vertical */
+  padding: 10px 0;     /* diminui o padding para aproximar o título */
+  margin-top: 20px;    /* ajusta a distância do título */
+  overflow: visible;
+}
+
+
+.swiper-slide {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-slide.card {
+    width: 22vw;         /* antes: 18vw */
+  height: 37vw;        /* antes: 32vw */
+  max-width: 380px;    /* antes: 300px */
+  max-height: 580px;   /* antes: 480px */
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-inner {
+  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+
+  /* garante que a imagem ocupa a carta inteira */
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+
+
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+/*----------------------------------------------cartas parte Frente pagina gods */
+.card.artemis .card-front {
+  background-image: url('/images/artemis_front.png');
+}
+.card.aphrodite .card-front {
+  background-image: url('/images/aphrodite_front.png');
+}
+.card.athena .card-front {
+  background-image: url('/images/svg/carta\ athena.svg');
+  /* -background-image: url('/images/athena.png');*/
+}
+.card.hera .card-front {
+  background-image: url('/images/hera_front.png');
+}
+
+.card.hermes .card-front {
+  background-image: url('/images/hermescarta_front.png');
+}
+
+.card.dionysus .card-front {
+  background-image: url('/images/dionisio.png');
+}
+
+.card.hades .card-front {
+  background-image: url('/images/carta\ hades.png');
+}
+
+.card.ares .card-front {
+  background-image: url('/images/arescarta_front.png');
+}
+
+.card.apollo .card-front {
+  background-image: url('/images/carta\ apollo.png');
+}
+
+.card.demeter .card-front {
+  background-image: url('/images/carta\ demeter.png');
+}
+
+.card.zeus .card-front {
+  background-image: url('/images/carta\ zeus.png');
+}
+
+.card.persephone .card-front {
+  background-image: url('/images/carta\ persephone.png');
+}
+
+.card.poseidon .card-front {
+  background-image: url('/images/carta\ poseidon.png');
+}
+.card.hestia .card-front {
+  background-image: url('/images/carta\ hestia.png');
+}
+
+.card.kronos .card-front {
+  background-image: url('/images/carta\ kronos.png');
+}
+
+.card.rhea .card-front {
+  background-image: url('/images/carta\ rhea.png');
+}
+
+.card.hephaestus .card-front {
+  background-image: url('/images/carta\ hefesto.png');
+}
+
+
+/* Verso */
+.card.artemis .card-back {
+  background-image: url('/images/artemis_back.png');
+}
+.card.aphrodite .card-back {
+  background-image: url('/images/svg/carta\ aphrodite\ back.svg');
+}
+.card.athena .card-back {
+  background-image: url('/images/svg/carta\ athena\ back.svg');
+}
+.card.hera .card-back {
+  background-image: url('/images/hera_back.png');
+}
+
+.card.hermes .card-back {
+  background-image: url('/images/svg/carta\ hermes\ back.svg');
+}
+
+.card.ares .card-back {
+  background-image: url('/images/svg/carta\ ares\ back.svg');
+}
+
+.card.apollo .card-back {
+  background-image: url('/images/svg/carta\ apollo\ back.svg');
+}
+
+.card.dionysus .card-back {
+  background-image: url('/images/svg/carta\ dionysus\ back.svg');
+}
+
+.card.demeter .card-back {
+  background-image: url('/images/svg/carta\ demeter\ back.svg');
+}
+
+.card.hades .card-back {
+  background-image: url('/images/svg/carta\ hades\ back.svg');
+}
+
+.card.zeus .card-back {
+  background-image: url('/images/svg/carta\ zeus\ back.svg');
+}
+
+.card.poseidon .card-back {
+  background-image: url('/images/svg/carta\ poseidon\ back.svg');
+}
+
+.card.hestia .card-back {
+  background-image: url('/images/svg/carta\ hestia\ back.svg');
+}
+
+.card.persephone .card-back {
+  background-image: url('/images/svg/carta\ persephone\ back.svg');
+}
+
+.card.kronos .card-back {
+  background-image: url('/images/svg/carta\ kronos\ back.svg');
+}
+
+.card.rhea .card-back {
+  background-image: url('/images/svg/carta\ rhea\ back.svg');
+}
+
+.card.hephaestus .card-back {
+  background-image: url('/images/svg/carta\ hefesto\ back.svg');
+}
+
+/* Flip para o verso */
+.card-back {
+  transform: rotateY(180deg);
+  
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: transparent;
+  border: 1px solid #130D1A;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 12px;
+  color: #130D1A;
+  transition: all 0.3s ease;
+
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: #130D1A;
+  color: #eae4dc;
+}
+
+
+
+@keyframes rotateFullTurn {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.swiper-slide-active .card-inner {
+  animation: rotateFullTurn 2.1s linear forwards;
+  transform-origin: center center;
+}
+
+.swiper-slide-active {
+  transform: scale(1.1) !important;
+}
+
+.line {
+  display: inline-block;
+  height: 0.5px;
+  width: 200px; /* ajusta */
+  background-color: #130D1A;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+
+
+.hover-tooltip {
+  position: fixed;
+  background: #130D1A;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+  font-family:qtagate;
+}
+
+
+
+
+/* -------------------------------- responsivo  */
+
+
+
+@media (max-width: 480px) {
+  .nav {
+    top: 45px;
+    right: 35px;
+    padding: 6px;
+    border-radius: 40px;
+  }
+  
+     /* aumentar a área real do menu aberto */
+  .nav input:checked ~ .menu {
+    width: clamp(260px, 85vw, 460px);
+  }
+
+  /* escalar o menu inteiro */
+  .nav {
+    transform: scale(0.78);
+    transform-origin: top right;
+  }
+  
+
+  .title {
+  margin: 90px 0px 0px;
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: #130D1A;
+}
+
+/* Olympian Roots titulo */
+.titlehome{
+  font-size: 5rem;
+}
+
+.buttons {
+  gap: 20px;
+}
+
+.subtitle{
+  margin-bottom: 100px;
+}
+
+
+  .card-img {
+    width: clamp(90px, 26vw, 160px);
+    opacity: 0.8;
+  }
+
+  .cards-bg {
+    height: 100vh;
+  }
+
+  .divider {
+    width: 380px; /* diminui o conjunto todo */
+    gap: 6px;
+  }
+
+  .line {
+    flex-grow: 0;      /* IMPORTANTE */
+    width: 180px;       
+    height: 0.5px;
+  }
+
+.star {
+  width: 30px;
+  height: auto;
+}
+
+
+  /* GALERIA GODS - RESPONSIVO */
+
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    width: 100%;
+  }
+  .title {
+    margin: 90px 0px 20px;
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: #130D1A;
+  }
+
+  .swiper {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 10px;
+    overflow: visible;
+  }
+
+  .swiper-slide.card {
+    width: 85vw;        /* Ocupa 85% da largura da tela */
+    height: auto;
+    max-width: 320px;   /* Largura máxima */
+    aspect-ratio: 2/3;  /* Mantém proporção da carta */
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    background-size: cover;  /* Cobre toda a área */
+  }
+
+  /* Botões de navegação menores */
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    font-size: 5px;
+  }
+
+  /* Ajustar posição dos botões */
+  .swiper-button-prev {
+    left: 10px;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 45px;
+    height: 45px;
+  }
+  /* Animação de rotação mais suave no mobile */
+  .swiper-slide-active .card-inner {
+    animation: rotateFullTurn 1.8s linear forwards;
+  }
+
+  .swiper-slide-active {
+    transform: scale(1.05) !important;  /* Menos zoom no mobile */
+  }
+
+  .swiper {
+  z-index: 1; /* REDUZIR - não pode ser maior que o nav */
+  overflow: visible;
+}
+
+/* Se tiveres outras secções com z-index alto */
+.swiper-slide {
+  z-index: 1;
+}
+
+.card-inner {
+  z-index: 1;
+}
+}
+
+
+
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Olympian Roots</title>
+ <link rel="icon" type="image/svg+xml" href="images/svg/icon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="images/svg/icon_darkmode.svg" media="(prefers-color-scheme: dark)">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="about.css" />
+
+
+ <!-- fonte clash -->
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600&display=swap" rel="stylesheet">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  
+</head>
+
+<body>
+  <!-- Menu com checkbox para abrir/fechar -->
+  <div class="nav">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class="menu">
+      <li><a href="index.html">home</a></li>
+      <li><a href="familytree.html">tree</a></li>
+      <li><a href="gods.html">gods</a></li>
+      <li><a href="myths.html">myths</a></li>
+      <li><a href="about.html">about</a></li>
+    </div>
+  </div>
+
+  <!-- Imagens/SVG estrelas alinhadas com as linhas -->
+<!-- Canto superior esquerdo -->
+<img src="images/svg/star_up_left.svg" alt="star" style="position: fixed; top: 4%; left: 3%; z-index: -1; transform: translate(-50%, -50%);" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; top: 2%; left: 6%; z-index: -1;" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; top: 10%; left: 2%; z-index: -1;" />
+
+<!-- Canto superior direito  -->
+<img src="images/svg/star_up_left.svg" alt="star" style="position: fixed; top: 4%; right: 3%; z-index: -1; transform: translate(50%, -50%);" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; top: 2%; right: 6%; z-index: -1;" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; top: 10%; right: 2%; z-index: -1;" />
+
+<!-- Canto inferior direito  -->
+<img src="images/svg/star_up_left.svg" alt="star" style="position: fixed; bottom: 4%; right: 3%; z-index: -1; transform: translate(50%, 50%);" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; bottom: 2%; right: 6%; z-index: -1;" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; bottom: 10%; right: 2%; z-index: -1;" />
+
+<!-- Canto inferior esquerdo  -->
+<img src="images/svg/star_up_left.svg" alt="star" style="position: fixed; bottom: 4%; left: 3%; z-index: -1; transform: translate(-50%, 50%);" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; bottom: 2%; left: 6%; z-index: -1;" />
+<img src="images/svg/ministar.svg" alt="star mini" style="position: fixed; bottom: 10%; left: 2%; z-index: -1;" />
+
+<!-- SVG das linhas decorativas-->
+<svg class="decorative-border" viewBox="0 0 1200 600" preserveAspectRatio="none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;">
+  <line class="line_deco" x1="10%" y1="4%" x2="90%" y2="4%" />
+  <line class="line_deco" x1="10%" y1="96%" x2="90%" y2="96%" />
+  <line class="line_deco" x1="3%" y1="16.67%" x2="3%" y2="83.33%" />
+  <line class="line_deco" x1="97%" y1="16.67%" x2="97%" y2="83.33%" />
+</svg>
+
+
+
+  <!-- Container para as cartas centralizadas -->
+  <div class="cards-container">
+    <!-- Carta lateral esquerda -->
+    <img src="/images/hermescarta_front.png" alt="Carta esquerda" class="card side-card left" id="leftCard" />
+    
+    <!-- Texto sobre a carta principal -->
+    <!-- Wrapper da carta principal + texto  -->
+    <div class="main-card-wrapper">
+        <!-- Carta principal (central) -->
+        <img src="/images/svg/cartaback.svg" alt="Carta central" class="main-card" />
+        
+        <!-- Texto sobre a carta principal -->
+        <div class="div-about">
+            <h3>Welcome to Olympian Roots,</h3>
+           <p> Have you ever wondered about the relationships of the Greek gods or been fascinated by their mythical world? <br><br> This project is the result of my master’s research, creating an interactive encyclopedia of Greek mythology. It helps users explore the gods’ lives, stories, and connections in an engaging and easy-to-understand way. With god designs made by me, with thought and mantaining the symbols and core of each god.<br> Whether you are a student, enthusiast, or casual explorer, this digital encyclopedia invites you to connect with these timeless stories in a meaningful way. </p>
+        </div>
+    </div>
+    <!-- Carta lateral direita (cartas mudam)-->
+    <img src="/images/Artemis_front.png" alt="Carta direita" class="card side-card right" id="rightCard" />
+  </div>
+
+ 
+
+  <!-- Script de animação GSAP-->
+  <script src="about_gsap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+@font-face {
+    font-family: qtagate;
+    src: url(fonts/qt_agatetype/QTAgateType.otf);
+}
+
+@font-face {
+    font-family: clash;
+    src: url(fonts/ClashDisplay_Complete/Fonts/TTF/ClashDisplay-Variable.ttf);
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: clash, sans-serif;
+    background: #eae4dc;
+    color: #130D1A;
+    overflow-x: hidden;
+    display: block !important;
+    align-items: initial !important;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.myths-header {
+    padding: 40px 45px 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.myths-title-section h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0 0 15px;
+}
+
+/* =========================
+   FILTERS
+   ========================= */
+
+.filter-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 1px solid #130D1A;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-family: clash;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #130D1A;
+    color: #eae4dc;
+}
+
+/* =========================
+   GRID
+   ========================= */
+
+.myths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 65px;
+    padding: 40px;
+}
+
+/* =========================
+   CARD (FIXED HEIGHT — CRITICAL)
+   ========================= */
+
+.myth-card {
+    position: relative;
+    height: 520px;                 /* 🔒 ALTURA FIXA */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+}
+
+.myth-card:hover {
+    transform: translateY(-10px) scale(1.10);
+}
+
+
+
+.myth-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;           
+    display: block;
+    z-index: 1;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));
+    transition: filter 0.4s ease;
+}
+
+.myth-card:hover .myth-card-bg {
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,0.25));
+}
+
+
+
+.myth-card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 3vw 3vw; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.myth-title {
+    font-family: qtagate, sans-serif;
+    font-size: 1.7rem;
+    margin: 0 0 5px;
+    line-height: 1.2;
+}
+
+.myth-gods {
+    font-size: 15px;
+    font-style: italic;
+    color: #666;
+    margin: 5px 0;
+}
+
+.myth-divider {
+    width: 15vw;
+    height: 4px;
+    border-radius: 2px;
+    margin: 5px 0;
+}
+
+.myth-description {
+    font-size: 13px;
+    line-height: 1.9;
+    flex-grow: 1;
+}
+
+
+  
+
+.myth-card-btn {
+    align-self: flex-end;
+    padding: 6px 10px;
+    border: 1px solid #130D1A;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #130D1A;
+
+}
+
+.myth-card-btn:hover {
+    background: #130D1A;
+    color: #eae4dc;
+}
+
+
+
+.myth-card.rivalry .myth-title { color: #a44c56; }
+.myth-card.alliance .myth-title { color: #4f5aa9; }
+.myth-card.love .myth-title { color: #c967a7; }
+.myth-card.creation .myth-title { color: #7c3aed; }
+
+.rivalry .myth-divider { background: #a44c56; }
+.alliance .myth-divider { background: #4f5aa9; }
+.love .myth-divider { background: #c967a7; }
+.creation .myth-divider { background: #7c3aed; }
+
+
+
+.footerhome {
+    margin-top: 80px;
+}
+
+/* RESPONSIVE — MOBILE -----------------------------------*/
+
+@media (max-width: 768px) {
+
+    .myths-header {
+        padding: 120px 20px 30px;
+    }
+
+    .myths-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .myth-card {
+        height: 480px;     /* 🔒 ainda fixa */
+    }
+
+    .myth-card-content {
+        padding: 50px 28px;
+    }
+
+    .myth-title {
+        font-size: 1.2rem;
+    }
+
+    .myth-divider {
+        width: 40vw;
+        height: 3px;
+    }
+
+    .myth-description {
+        font-size: 10px;
+    }
+
+    .myth-card:hover {
+        transform: none;
+    }
+
+    .footerhome {
+        margin-top: 50px;
+    }
+}

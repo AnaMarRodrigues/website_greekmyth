@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'qtagate', sans-serif;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #130D1A;
+}
+
+/*textura*/
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#85827f 1px, transparent 0);
+  background-size: 2px 2px;
+  opacity: 0.08;
+  z-index: -9999;
+}
+
+/* Wrapper principal */
+.god-info {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1%;
+  z-index: 1;
+}
+
+.god-full img {
+  position: relative;
+  left: -4vw;
+  max-height: 950px;
+}
+
+.god-text {
+  max-width: 550px;
+  padding-bottom: 80px;
+  margin-left: 10px;
+}
+
+.god-text h1 {
+  font-weight: 200;
+  font-size: 6.2rem;
+}
+
+.god-text h3 {
+  font-family: 'clash';
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin-top: -80px;
+}
+
+h4 {
+  font-family: 'clash';
+  font-weight: 440;
+  font-size: 1.4rem;
+}
+
+.god-text p {
+  font-family: 'clash';
+  margin-top: -20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.god-btn {
+  padding: 9px 24px;
+  border: 1px solid #130D1A;
+  border-radius: 999px;
+  background: transparent;
+  color: #130D1A;
+  font-size: 0.94rem;
+  text-transform: lowercase;
+  font-family: clash;
+  font-weight: 2rem;
+  margin-top: 2rem;
+  margin-right: 30px;
+  display: inline-block;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.god-btn:hover {
+  background: #130D1A;
+  color: #eae4dc !important;
+}
+
+/* SVG */
+.decorative-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.line_deco {
+  stroke: #130D1A;
+  stroke-width: 0.7;
+}
+
+.back-btn {
+  position: fixed;
+  top: 7%;
+  left: 5%;
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  border: 1px solid #130D1A;
+  border-radius: 40px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+  outline: none;
+  z-index: 1000;
+}
+
+.back-arrow {
+  width: 25px;
+  height: 25px;
+  stroke: #130D1A;
+  stroke-width: 48px;
+  fill: none;
+  transition: stroke 0.5s;
+}
+
+.back-btn:hover .back-arrow {
+  stroke: #eae4dc;
+}
+
+.back-btn:hover {
+  background-color: #130D1A;
+  border-color: #130D1A;
+}
+
+/* Tooltip */
+.back-btn .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #130D1A;
+  color: #eae4dc;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: 'qtagate', sans-serif;
+  font-size: 10px;
+  text-transform: lowercase;
+  transition: opacity 0.3s;
+}
+
+.back-btn .tooltip::after {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent #130D1A transparent transparent;
+}
+
+.back-btn:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  font-family: 'qtagate', sans-serif;
+}
+
+
+
+
+
+
+
+
+/* -------------------------------------------- RESPONSIVO MOBILE */
+
+
+@media (max-width: 768px) {
+  .god-info {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-top: 20px;
+  }
+
+  .god-text {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .god-text h1 {
+    text-align: center;
+    font-size: 4.9rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .god-text h3 {
+    text-align: center;
+    margin-top: -20px;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+  }
+
+
+  .god-full {
+  
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 150px ;
+  }
+
+  .god-full img {
+    position:relative;
+    left: 0;
+    max-height: 500px;
+    width: auto;
+    max-width: 85%;
+  }
+
+
+  .god-text h4 {
+    text-align: left;
+    font-size: 1.4rem;
+    margin-top: 20px;
+  }
+
+  .god-text p {
+    text-align: left;
+    font-size: 1rem;
+    margin-top: -20px;
+  }
+
+  .god-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-right: 20px;
+    display: inline-block;
+  }
+
+
+}
+

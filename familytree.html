@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree</title>
+     <link rel="icon" type="image/svg+xml" href="images/svg/icon.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="images/svg/icon_darkmode.svg" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+     <!-- ficheiro CSS principal -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="fonts/ClashGrotesk_Complete/Fonts/WEB/css/clash-grotesk.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+   
+    <style>
+        /* estilos aqui porque estavam a colidir com o style.css */
+
+        /*popup com explicação da pagina*/
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(26, 26, 26, 0.85);
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .popup-wrapper {
+            position: relative;
+            width: 450px;
+            max-width: 90%;
+        }
+        .popup-svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity:1;
+        }
+        .popup-content {
+            position: absolute;
+            top: 5%;
+            left: 12%;
+            right: 12%;
+            font-family: clash, sans-serif;
+            font-size: 1.0rem;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .popup-content h3 {
+            font-size: 1.9rem;
+            font-weight: 480;
+        }
+        .popup-content p br {
+            display: block;
+            margin-bottom: 0.8rem; 
+        }
+        .close-btn {
+            position: absolute;
+            top: 6%;
+            right: 6%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .close-btn img {
+            width: 33px;
+            height: 33px;
+        }
+        .dont-show-btn {
+            position: absolute;
+            bottom: 8%;
+            right: 8%;
+            background: transparent;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 999px;
+            font-family: clash, sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: 1px solid #1a1a1a;
+            z-index: 10001;
+            pointer-events: auto;
+        }
+        .dont-show-btn:hover {
+            background: #1a1a1a;
+            color:#eae4dc; ;
+        }
+        /* ---------------------------estilo para arvore - base de  */
+        .family-tree-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tree-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .node-card {
+            cursor: pointer;
+        }
+
+        .node-card:hover {
+            filter: brightness(1.1);
+          box-shadow: (2px 10px 13px rgba(0, 0, 0, 0.15));
+        
+        }
+        
+        .card-image {
+            width: 225px;
+            height: 255px;
+            z-index: 9;
+            filter: drop-shadow(1px 7px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        .card-name {
+            fill: #1a1a1a;
+            font-family: clash, sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            text-anchor: middle;
+        }
+
+        .card-title {
+            fill: #1a1a1a;
+            font-family: clash, sans-serif;
+            font-size: 14px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .links-container {
+            z-index: 999;
+        }
+
+        .nodes-container {
+            z-index: 10;
+        }
+
+        .link {
+            fill: none;
+            stroke-width: 3;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: stroke;
+            stroke-linecap: round;
+            cursor: default;
+        }
+
+        .link.highlighted {
+            opacity: 1;
+            stroke-width: 4;
+          
+        }
+
+        .link.family {
+            stroke: #4a6c48;
+        }
+
+        .link.sibling {
+            stroke: #679256; 
+        }
+
+        .link.marriage {
+            stroke: #d946a6;
+            stroke-dasharray: 3,3;
+        }
+
+        .link.rivalry {
+            stroke: #812727;
+            stroke-dasharray: 5,5;
+        }
+
+        .link.alliance {
+            stroke: #3240b0;
+            stroke-dasharray: 2,2;
+        }
+
+        .link:hover {
+            opacity: 1 !important;
+            stroke-width: 7;
+        }
+
+        /* Labels das relações - sempre visíveis */
+        .link-label-group {
+            opacity: 1;
+            pointer-events: none;
+            z-index: 990;
+        }
+
+        .link.family,
+        .link.sibling,
+        .link.marriage,
+        .link.rivalry,
+        .link.alliance {
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                }
+
+
+        .link-label-group .link-label-rect {
+            transition: transform 0.3s ease;
+        }
+
+        /* Retângulos de fundo das labels */
+        .link-label-rect {
+            stroke-width: 1.5;
+            rx: 5;
+            ry: 5;
+        }
+
+        /* Cores dos retângulos baseadas no tipo de relação */
+        .link-label-rect.family {
+            fill: #49664c;
+        }
+
+        .link-label-rect.sibling {
+            fill: #6d9c71;
+        }
+
+        .link-label-rect.marriage {
+            fill: #c967a7;
+        }
+
+        .link-label-rect.rivalry {
+            fill: #a44c56;
+        }
+
+        .link-label-rect.alliance {
+            fill: #4f5aa9;
+        }
+
+        .link-label-text {
+            fill: #eae4dc;
+            font-family: clash, sans-serif;
+            font-size: 12px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+
+        /* Estilo para quando a label está em hover */
+        .link-label-group.show .link-label-rect {
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+        }
+
+        /* Diminuir opacidade das outras labels quando uma está em hover */
+        .links-container.has-hover .link-label-group:not(.show) {
+            opacity: 0.3;
+        }
+
+        .links-container.has-hover .link:not(.highlighted) {
+            opacity: 0.2;
+        }
+
+        /* Tooltip detalhado para relações - REDESENHADO */
+        .relationship-tooltip {
+            position: fixed;
+            background: #130D1A;
+            color: #eae4dc;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-family: clash, sans-serif;
+            line-height: 1.5;
+            max-width: 300px;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(234, 228, 220, 0.15);
+        }
+
+        .relationship-tooltip.show {
+            opacity: 1;
+        }
+
+        .relationship-tooltip h4 {
+            font-family: clash, sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 0 10px 0;
+            color: #eae4dc;
+            letter-spacing: 0.3px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(234, 228, 220, 0.2);
+        }
+
+        .relationship-tooltip p {
+            font-size: 0.88rem;
+            color: rgba(234, 228, 220, 0.9);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .controls {
+            position: absolute;
+            top: 300px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            outline: 1px solid #1a1a1a;
+            border-radius: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: clash, sans-serif;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: none;
+            color: #1a1a1a;
+        }
+
+        .control-btn:hover {
+            background-color: #130D1A;
+            color: #eae4dc;
+        }
+
+        .relationship-controls {
+            position: absolute;
+            top: 50px;
+            left: 45px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .relationship-controls-title {
+            font-family: clash, sans-serif;
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .relationship-buttons {
+            display: flex;
+            gap: 18px;
+        }
+
+        .relationship-btn {
+            padding: 8px 18px;
+            border: 1px solid #130D1A;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #130D1A;
+            font-size: 0.8rem;
+            text-transform: lowercase;
+            transition: all 0.3s ease;
+            font-family: clash;
+            font-weight: 350;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .relationship-btn:hover {
+            background-color: #140e1a;
+            color: #eae4dc;
+        }
+
+        .relationship-btn.active {
+            background-color: #130D1A;
+            color: #eae4dc;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #1a1a1a;
+            font-family: clash, sans-serif;
+            z-index: 100;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE — MOBILE -----------------------------------*/
+
+@media (max-width: 768px) {
+     @media (max-width: 768px) {
+
+  .card-image {
+    width: 160px;   /* antes 225 / 280 */
+    height: auto;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+  .card-title {
+    font-size: 11px;
+  }
+}
+
+}
+    </style>
+</head>
+<body>
+    <!--menu-->
+    <div class="nav">
+        <input type="checkbox">
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="menu">
+            <li><a href="index.html">home</a></li>
+            <li><a href="familytree.html">tree</a></li>
+            <li><a href="gods.html">gods</a></li>
+            <li><a href="myths.html">myths</a></li>
+            <li><a href="about.html">about</a></li>
+        </div>
+    </div>
+
+    <!-- Overlay e Pop-up -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-wrapper" id="popup">
+            <img src="images/svg/cartaback.svg" alt="Info" class="popup-svg">
+            <button class="close-btn" id="closeBtn">
+                <img src="images/svg/cross-svg.svg" alt="Close">
+                <div class="hover-tooltip">close</div>
+            </button>
+            <button class="dont-show-btn" id="dontShowBtn">Don't show up again</button>
+            <div class="popup-content">
+                <h3>Important Info:</h3>
+                <p>
+                 In this page, you can explore the family tree of the Greek gods, from the primordial deities to the Olympians.
+            <br><br>
+            Navigate through different generations and discover how the gods are connected, along with their complex relationships. Use the different <b>categories</b> to explore more.
+            <br><br>
+            <b>Hover</b> over a relationship line to see which gods are involved and read a short summary of the myth.
+            <b>Click</b> on a god to open their detailed page.
+            Use the controls to <b>zoom in/out</b> or use the <b>mousepad</b> and navigate through the tree!
+            <br><br>
+            Have fun learning!
+
+             </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Family Tree -->
+    <div class="family-tree-container">
+        <!-- botoes de tipos de relações -->
+        <div class="relationship-controls">
+            <span class="relationship-controls-title">Type of relationships:</span>
+            <div class="relationship-buttons">
+                <button class="relationship-btn active" data-type="all">All relationships</button>
+                <button class="relationship-btn" data-type="family">Family</button>
+                <button class="relationship-btn" data-type="rivalry">Rivalries</button>
+                <button class="relationship-btn" data-type="alliance">Alliances</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="zoomIn">+</button>
+            <button class="control-btn" id="zoomOut">-</button>
+            <button class="control-btn" id="resetZoom">⌂</button>
+            <button class="control-btn" id="showInfo" title="Show info">ℹ</button>
+        </div>
+        
+        <div class="legend">
+            <div id="relationship-legend"></div>
+        </div>
+        
+        <svg class="tree-svg" id="tree-svg"></svg>
+    </div>
+    
+    <!-- Tooltip para detalhes das relações - sem svg -->
+    <div class="relationship-tooltip" id="relationshipTooltip">
+        <h4 id="tooltipTitle">Relationship</h4>
+        <p id="tooltipDetail">Details about the relationship between the gods.</p>
+    </div>
+
+    <footer class="footerhome"> 
+        <div class="footer-div">
+            <div class="divider">
+                <span class="line"></span>
+                <img src="images/svg/star_up_left.svg" alt="star" class="star" />
+                <span class="line"></span>
+            </div>
+        </div>
+    </footer>
+       <script type="module" src="/script.js"></script>
+    <script type="module" src="/familytree.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+
+</body>
+</html>

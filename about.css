@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'clash', 'qtagate', sans-serif;   
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #130D1A;
+}
+
+/* Container centralizado para as cartas */
+.cards-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 650px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    z-index: 900;
+}
+
+/* Wrapper para a carta principal + texto */
+.main-card-wrapper {
+    position: absolute;
+    width: 450px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    opacity: 0; /* ADICIONADO - começa invisível */
+}
+
+/* Carta central - imagem de fundo */
+.main-card {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 26px;
+    user-select: none;
+    transition: all 0.5s ease;
+    object-fit: cover;
+}
+
+/* Container do texto sobre a carta principal */
+.div-about {
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    right: 10%;
+    font-family: clash, sans-serif;
+    color: #130D1A;
+    line-height: 1.6;
+    z-index: 1;
+    pointer-events: none;
+    text-align: left;
+    font-size: 1.0rem;
+}
+
+.div-about p {
+    font-family: clash, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: #130D1A;
+    margin: 0.3rem 0; 
+}
+
+.div-about h3 {
+    font-family: qtagate, sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+}
+
+/* Estilo geral das cartas laterais */
+.side-card {
+    position: absolute;
+    width: 400px;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 26px;
+    user-select: none;
+    transform: translateY(-40%); /* centra verticalmente */
+    opacity: 0;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.side-card.left {
+    left: -180px; /* deslocamento para a esquerda da carta principal */
+}
+
+.side-card.right {
+    left: 430px; /* deslocamento para a direita da carta principal */
+}
+
+
+/* SVG */
+.decorative-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.line_deco {
+    stroke: #130D1A;
+    stroke-width: 0.7;
+}
+
+/* MOBILE — mesma versão, só menor
+ */
+@media (max-width: 768px) {
+  .cards-container {
+    transform: translate(-50%, -50%) scale(0.7);
+    transform-origin: center center;
+  }
+}
