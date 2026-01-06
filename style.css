@@ -356,135 +356,135 @@ background-position: center;
 
 /*----------------------------------------------cartas parte Frente pagina gods */
 .card.artemis .card-front {
-  background-image: url('/images/artemis_front.png');
+  background-image: url('images/artemis_front.png');
 }
 .card.aphrodite .card-front {
-  background-image: url('/images/aphrodite_front.png');
+  background-image: url('images/aphrodite_front.png');
 }
 .card.athena .card-front {
-  background-image: url('/images/svg/carta\ athena.svg');
+  background-image: url('images/svg/carta\ athena.svg');
   /* -background-image: url('/images/athena.png');*/
 }
 .card.hera .card-front {
-  background-image: url('/images/hera_front.png');
+  background-image: url('images/hera_front.png');
 }
 
 .card.hermes .card-front {
-  background-image: url('/images/hermescarta_front.png');
+  background-image: url('images/hermescarta_front.png');
 }
 
 .card.dionysus .card-front {
-  background-image: url('/images/dionisio.png');
+  background-image: url('images/dionisio.png');
 }
 
 .card.hades .card-front {
-  background-image: url('/images/carta\ hades.png');
+  background-image: url('images/carta\ hades.png');
 }
 
 .card.ares .card-front {
-  background-image: url('/images/arescarta_front.png');
+  background-image: url('images/arescarta_front.png');
 }
 
 .card.apollo .card-front {
-  background-image: url('/images/carta\ apollo.png');
+  background-image: url('images/carta\ apollo.png');
 }
 
 .card.demeter .card-front {
-  background-image: url('/images/carta\ demeter.png');
+  background-image: url('images/carta\ demeter.png');
 }
 
 .card.zeus .card-front {
-  background-image: url('/images/carta\ zeus.png');
+  background-image: url('images/carta\ zeus.png');
 }
 
 .card.persephone .card-front {
-  background-image: url('/images/carta\ persephone.png');
+  background-image: url('images/carta\ persephone.png');
 }
 
 .card.poseidon .card-front {
-  background-image: url('/images/carta\ poseidon.png');
+  background-image: url('images/carta\ poseidon.png');
 }
 .card.hestia .card-front {
-  background-image: url('/images/carta\ hestia.png');
+  background-image: url('images/carta\ hestia.png');
 }
 
 .card.kronos .card-front {
-  background-image: url('/images/carta\ kronos.png');
+  background-image: url('images/carta\ kronos.png');
 }
 
 .card.rhea .card-front {
-  background-image: url('/images/carta\ rhea.png');
+  background-image: url('images/carta\ rhea.png');
 }
 
 .card.hephaestus .card-front {
-  background-image: url('/images/carta\ hefesto.png');
+  background-image: url('images/carta\ hefesto.png');
 }
 
 
 /* Verso */
 .card.artemis .card-back {
-  background-image: url('/images/artemis_back.png');
+  background-image: url('images/artemis_back.png');
 }
 .card.aphrodite .card-back {
-  background-image: url('/images/svg/carta\ aphrodite\ back.svg');
+  background-image: url('images/svg/carta\ aphrodite\ back.svg');
 }
 .card.athena .card-back {
-  background-image: url('/images/svg/carta\ athena\ back.svg');
+  background-image: url('images/svg/carta\ athena\ back.svg');
 }
 .card.hera .card-back {
-  background-image: url('/images/hera_back.png');
+  background-image: url('images/hera_back.png');
 }
 
 .card.hermes .card-back {
-  background-image: url('/images/svg/carta\ hermes\ back.svg');
+  background-image: url('images/svg/carta\ hermes\ back.svg');
 }
 
 .card.ares .card-back {
-  background-image: url('/images/svg/carta\ ares\ back.svg');
+  background-image: url('images/svg/carta\ ares\ back.svg');
 }
 
 .card.apollo .card-back {
-  background-image: url('/images/svg/carta\ apollo\ back.svg');
+  background-image: url('images/svg/carta\ apollo\ back.svg');
 }
 
 .card.dionysus .card-back {
-  background-image: url('/images/svg/carta\ dionysus\ back.svg');
+  background-image: url('images/svg/carta\ dionysus\ back.svg');
 }
 
 .card.demeter .card-back {
-  background-image: url('/images/svg/carta\ demeter\ back.svg');
+  background-image: url('images/svg/carta\ demeter\ back.svg');
 }
 
 .card.hades .card-back {
-  background-image: url('/images/svg/carta\ hades\ back.svg');
+  background-image: url('images/svg/carta\ hades\ back.svg');
 }
 
 .card.zeus .card-back {
-  background-image: url('/images/svg/carta\ zeus\ back.svg');
+  background-image: url('images/svg/carta\ zeus\ back.svg');
 }
 
 .card.poseidon .card-back {
-  background-image: url('/images/svg/carta\ poseidon\ back.svg');
+  background-image: url('images/svg/carta\ poseidon\ back.svg');
 }
 
 .card.hestia .card-back {
-  background-image: url('/images/svg/carta\ hestia\ back.svg');
+  background-image: url('images/svg/carta\ hestia\ back.svg');
 }
 
 .card.persephone .card-back {
-  background-image: url('/images/svg/carta\ persephone\ back.svg');
+  background-image: url('images/svg/carta\ persephone\ back.svg');
 }
 
 .card.kronos .card-back {
-  background-image: url('/images/svg/carta\ kronos\ back.svg');
+  background-image: url('images/svg/carta\ kronos\ back.svg');
 }
 
 .card.rhea .card-back {
-  background-image: url('/images/svg/carta\ rhea\ back.svg');
+  background-image: url('images/svg/carta\ rhea\ back.svg');
 }
 
 .card.hephaestus .card-back {
-  background-image: url('/images/svg/carta\ hefesto\ back.svg');
+  background-image: url('images/svg/carta\ hefesto\ back.svg');
 }
 
 /* Flip para o verso */
